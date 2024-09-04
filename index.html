@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasterMacron</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #17153B;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .audio-container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .audio-player {
+            background-color: #2E236C;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .audio-title {
+            background-color: #433D8B;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .audio-title:hover {
+            background-color: #C8ACD6;
+        }
+
+        .audio-content {
+            display: none;
+            padding: 20px;
+            background-color: #2E236C;
+        }
+
+        .audio-content audio {
+            width: 100%;
+        }
+
+        .arrow {
+            transform: rotate(0deg);
+            transition: transform 0.3s;
+        }
+
+        .arrow.open {
+            transform: rotate(90deg);
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const titles = document.querySelectorAll(".audio-title");
+
+            titles.forEach(title => {
+                title.addEventListener("click", function() {
+                    const content = this.nextElementSibling;
+                    const arrow = this.querySelector(".arrow");
+
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                        arrow.classList.remove("open");
+                    } else {
+                        content.style.display = "block";
+                        arrow.classList.add("open");
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>MasterMacron</h1>
+    <div class="audio-container">
+        <div class="audio-player">
+            <div class="audio-title">
+                <span>Macron est ton patron pervers</span>
+                <span class="arrow">▶</span>
+            </div>
+            <div class="audio-content">
+                <audio controls>
+                    <source src="Audio/MacronPatronPervers.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas la balise audio.
+                </audio>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
